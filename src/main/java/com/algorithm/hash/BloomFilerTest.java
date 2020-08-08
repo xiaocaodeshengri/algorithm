@@ -8,7 +8,7 @@ public class BloomFilerTest {
         BloomFilter<Integer> bloomFilter = BloomFilter.create(Funnels.integerFunnel(), 10000000, 0.01);
 
         long start = System.currentTimeMillis();
-        for(int i = 0 ; i < 100000000 ; i ++) {
+        for(int i = 0 ; i < 10000000 ; i ++) {
             bloomFilter.put(i);
         }
         System.out.println((System.currentTimeMillis() - start) + ":ms");
@@ -17,7 +17,7 @@ public class BloomFilerTest {
         int t=0;
         for(int i = 20000000 ; i < 30000000 ; i++) {
 		  if(bloomFilter.mightContain(i)) { t ++; } }
-		  System.out.println("误差率:" + t);
+		  System.out.println("误差率:" + t/10000000);
 
     }
 
